@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -14,11 +14,8 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-
 import Header from './components/Header'
 import List from './components/List'
-
 import DATA from './data/dataset.json'
 
 

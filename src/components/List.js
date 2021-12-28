@@ -11,9 +11,6 @@ import {
 import ListItem from './ListItem';
 import { Icon } from 'react-native-elements';
 
-
-
-
 const List = ({ data }) => {
   const [keyword, setKeyword] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -84,7 +81,7 @@ const List = ({ data }) => {
         </TouchableOpacity>
         </View>
         <Text style={styles.numOfResults}
-        >{`showing ${dataLength} results`}</Text>
+        >{`Showing ${dataLength} results`}</Text>
         </View>
         }
         keyExtractor={(item, index) => item.id}
@@ -117,7 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     marginHorizontal: 20,
     marginVertical: 10,
-    padding: 1,
+    padding: 2,
     borderRadius:10,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },

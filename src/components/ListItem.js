@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import moment from "moment";
 
-const ListItem = ({ item, index }) => {
+const ListItem = ({ item }) => {
   const [toggle, setToggle] = useState(false)
 
   return (
