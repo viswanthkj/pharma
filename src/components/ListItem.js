@@ -1,66 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
-  Text
+  Text,
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 import moment from "moment";
 
 const ListItem = ({ item, index }) => {
+  const [toggle, setToggle] = useState(false)
+
   return (
-    <View style={{ 
-        height: 150,
-        backgroundColor: '#FFF',
-        borderRadius: 10,
-        overflow: 'hidden',
-        marginVertical: 10,
-        padding: 10,
-        marginHorizontal: 20
-    }}>
-      <View style={{ 
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        // paddingHorizontal: 5
-        }}>
+    <View style={styles.itemContainer}>
+      <View style={styles.titleContainer}>
       <Text
-       style={{
-         fontSize: 16,
-         color: '#000',
-         fontWeight: 'bold'
-       }}
+       style={styles.titleText}
        numberOfLines={1}
        ellipsizeMode='tail'
-      >{item.name}</Text>
+      >{item.name.toUpperCase()}</Text>
       <Text
-      style={{
-        fontSize: 14,
-        color: '#000',
-        fontWeight: 'bold'
-      }}
+      style={styles.dateText}
       numberOfLines={1}
       ellipsizeMode='tail'
       >{moment(item.released).format('DD/MM/YYYY')}</Text>
       </View>
       <Text
-         style={{
-          fontSize: 14,
-          color: '#000',
-          marginVertical: 5
-        }}
-        numberOfLines={1}
+         style={styles.diseaseText}
+        numberOfLines={2}
         ellipsizeMode='tail'
-      >{item.diseases.toString()}</Text>
-      <Text
-       style={{
-        fontSize: 14,
-        color: '#000',
-        marginTop: 5
-      }}
-      numberOfLines={4}
-      ellipsizeMode='tail'
-      >{item.description}</Text>
+      ><Text style={{ fontWeight: 'bold'}}>Diseases : </Text>{item.diseases.toString()}</Text>
+      <TouchableOpacity onPress={()=> setToggle(!toggle)}>
+        <Text
+        style={styles.description}
+        numberOfLines={toggle ? null : 4}
+        ellipsizeMode='tail'
+        >{item.description}
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  itemContainer: { 
+    minHeight: 200,
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    marginVertical: 10,
+    padding: 15,
+    marginHorizontal: 20,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3,
+},
+  titleContainer: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: '#efefef',
+    paddingBottom: 5
+    // paddingHorizontal: 5
+    },
+    titleText:{
+      fontSize: 16,
+      color: '#000',
+      fontWeight: 'bold'
+    },
+    dateText:{
+      fontSize: 12,
+      color: '#000',
+      fontWeight: 'bold'
+    },
+    diseaseText:{
+      fontSize: 16,
+      color: '#000',
+      marginVertical: 5,
+    },
+    description: {
+      fontSize: 16,
+      color: '#000',
+      marginVertical: 10,
+      borderWidth: 3,
+      borderColor: '#efefef',
+      padding: 10
+    }
+})
 
 export default ListItem

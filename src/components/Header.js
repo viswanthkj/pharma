@@ -1,24 +1,34 @@
 import React from 'react';
 import {
   View,
-  Image
+  Image,
+  StyleSheet
 } from 'react-native';
 import Logo from '../images/logo.png'
 
 
 const Header = () => {
     return (
-        <View style={{ height: 80, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center'}} >
-          {/* <Text>hi</Text> */}
+        <View style={styles.headerContainer} >
           <Image
-        style={{
-          width: 50,
-          height: 50,
-        }}
-        source={Logo}
-      />
+            style={styles.logoImage}
+            source={Logo}
+          />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+  headerContainer: { 
+      height: 80, 
+      backgroundColor: '#fff', 
+      justifyContent: 'center', 
+      alignItems: 'center'
+  },
+  logoImage: {
+    width: 50,
+    height: 50,
+  }
+})
 
 export default Header
