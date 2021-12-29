@@ -1,6 +1,6 @@
 # Steps to run project - Pharma
 
-- Git clone https://github.com/viswanthkj/pharma.git
+- git clone https://github.com/viswanthkj/pharma.git
 - cd pharma
 - git checkout master
 - yarn install
